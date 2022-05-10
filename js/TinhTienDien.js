@@ -34,7 +34,7 @@ function tinhTienDien() {
   var kw = +getId("kw").value;
 
   // B3: Tạo biến tienDien hứng hàm tongTienDien
-  var tienDien = tongTienDien(kw, 500, 650, 850, 1100, 1300);
+  var tienDien = tongTienDien(kw, hoTen, 500, 650, 850, 1100, 1300);
 
   // B4: In kết quả ra trình duyệt
   var xuatTienDien = getId("xuatTienDien");
@@ -49,10 +49,11 @@ function tinhTienDien() {
 }
 
 // B2: Tách hàm tính tổng tiền điện, thêm tham số là (số kw người dùng nhập, mức giá điện cần thanh toán)
-function tongTienDien(kw, kw_50, kw_50_100, kw_100_200, kw_200_350, kw_350) {
+function tongTienDien(kw, hoTen, kw_50, kw_50_100, kw_100_200, kw_200_350, kw_350) {
   var tienDien = 0;
-  if (hoTen == "" || kw == "" || kw < 0) {
+  if (!hoTen || kw == "" || kw < 0) {
     alert("Vui lòng nhập giá trị");
+    return;
   } else if (kw <= 50) {
     tienDien = kw * kw_50;
   } else if (kw <= 100) {
